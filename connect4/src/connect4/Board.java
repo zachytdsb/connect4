@@ -6,10 +6,12 @@ public class Board {
 	private int Cols;
 
 	public Board(int aRows, int aCols) {
-		board = new Cell[aRows][aCols];
+		Rows = aRows;
+		Cols = aCols;
+		board = new Cell[Rows][Cols];
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length; j++) {
-				board[i][j] = State.E;
+				board[i][j] = new Cell();
 			}
 		}
 
@@ -29,15 +31,16 @@ public class Board {
 
 	@Override
 	public String toString() {
+		String output = "";
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length; j++) {
+				output += board[i][j].toString();
 			}
-			System.out.print("/n");
+			output += "\n";
 		}
-		return null;
-
+		return output;
 	}
-
+/*
 	public void display() {
 		System.out.println("BOARD");
 		for (int i = 0; i < Rows; i++) {
@@ -47,5 +50,5 @@ public class Board {
 			System.out.println();
 		} // thank you dark souls
 
-	}
+	}*/
 }
