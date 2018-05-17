@@ -46,7 +46,7 @@ public class Board {
 			for (int j = 0; j < Cols; j++) {
 				System.out.printf("%s ", board[i][j]);
 			}
-			System.out.println();
+			System.out.println(); test
 		} // thank you dark souls
 
 	}*/

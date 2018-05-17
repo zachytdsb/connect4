@@ -12,6 +12,6 @@ public class Driver {
 		s.changeState(State.P1);
 		q.changeState(State.P1);
 		System.out.println(s.equals(q));
-		*/
+		*///test
 	}
 }

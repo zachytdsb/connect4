@@ -1,6 +1,6 @@
 package connect4;
 
-public class Cell {
+public class Cell { //test
 	private State state;
 	public Cell (){
 		state = State.E;
