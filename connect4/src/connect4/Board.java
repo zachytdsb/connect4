@@ -2,13 +2,13 @@ package connect4;
 
 public class Board {
 	private Cell[][] board;
-	private int Rows;
-	private int Cols;
+	private int rows;
+	private int cols;
 
 	public Board(int aRows, int aCols) {
-		Rows = aRows;
-		Cols = aCols;
-		board = new Cell[Rows][Cols];
+		rows = aRows;
+		cols = aCols;
+		board = new Cell[rows][cols];
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length; j++) {
 				board[i][j] = new Cell();
@@ -17,15 +17,27 @@ public class Board {
 
 	}
 
-	public void deposit(State player, int column) {
-		int lowest = 0;
-		for (int i = board[column].length - 1; i >= 0; i--) {
-			if (board[Rows][Cols].getState() == State.E) {
-				lowest = i;
-				break;
+	public int getRow(int column) {
+		int lowest = rows - 1;
+		for (int i = lowest; i > 0; i--) {
+			if (board[rows][cols].getState() == State.E) {
+				return i;
 			}
 		}
-		board[lowest][column].changeState(player);;
+		return 0;
+	}
+	
+	public boolean isColFull(int column){
+		if(board[0][column].getState() == State.E){
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+	
+	public void setState(int row, int column, State state){
+		board[row][column].changeState(state);
 	}
 
 	@Override
@@ -39,15 +51,4 @@ public class Board {
 		}
 		return output;
 	}
-/*
-	public void display() {
-		System.out.println("BOARD");
-		for (int i = 0; i < Rows; i++) {
-			for (int j = 0; j < Cols; j++) {
-				System.out.printf("%s ", board[i][j]);
-			}
-			System.out.println(); test
-		} // thank you dark souls
-
-	}*/
 }
