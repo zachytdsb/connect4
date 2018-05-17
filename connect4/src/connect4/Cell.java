@@ -7,6 +7,10 @@ public class Cell {
 		
 	}
 	
+	public State getState(){
+		return state;
+	}
+	
 	public void changeState(State aState){
 		state = aState;
 	}
@@ -22,6 +26,15 @@ public class Cell {
 			return "E";
 		default:
 			return "E";
+		}
+	}
+	
+	public boolean equals(Cell i){
+		if(state == i.getState()){
+			return true;
+		}
+		else {
+			return false;
 		}
 	}
 }

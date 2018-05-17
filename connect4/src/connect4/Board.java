@@ -17,16 +17,15 @@ public class Board {
 
 	}
 
-	public void deposit(int colour, int column,
-			int[][] board) {/* need runtime exception for column full */
+	public void deposit(State player, int column) {
 		int lowest = 0;
-		for (int i = board.length - 1; i >= 0; i--) {
-			if (board[i][column] == 0) {
+		for (int i = board[column].length - 1; i >= 0; i--) {
+			if (board[Rows][Cols].getState() == State.E) {
 				lowest = i;
 				break;
 			}
 		}
-		board[lowest][column] = colour;
+		board[lowest][column].changeState(player);;
 	}
 
 	@Override
