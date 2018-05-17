@@ -20,7 +20,7 @@ public class Board {
 	public int getRow(int column) {
 		int lowest = rows - 1;
 		for (int i = lowest; i > 0; i--) {
-			if (board[rows][cols].getState() == State.E) {
+			if (board[i][column].getState() == State.E) {
 				return i;
 			}
 		}
