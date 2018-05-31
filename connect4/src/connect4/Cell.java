@@ -18,10 +18,10 @@ public class Cell { //test
 	@Override
 	public String toString(){
 		switch(state){
-		case P1:
-			return "P1";
-		case P2:
-			return "P2";
+		case X:
+			return "X";
+		case O:
+			return "O";
 		case E:
 			return "E";
 		default:

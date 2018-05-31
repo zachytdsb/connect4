@@ -42,9 +42,9 @@ public class Driver {
 
 	public static String who(int turn) { // Used for look up of turn int
 		if (turn == 0) {
-			return "P1";
+			return "X";
 		} else if (turn == 1) {
-			return "P2";
+			return "O";
 		} else {
 			return "Error";
 		}
@@ -52,9 +52,9 @@ public class Driver {
 
 	public static State getState(int turn) {//may be able to get this from board
 		if (turn == 0) {
-			return State.P1;
+			return State.X;
 		} else if (turn == 1) {
-			return State.P2;
+			return State.O;
 		} else {
 			return State.E;
 		}
