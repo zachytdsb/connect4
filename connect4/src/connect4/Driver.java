@@ -8,15 +8,22 @@ public class Driver {
 		boolean play = true;
 		int turn = 0;
 		int col;
-		int errorTest;
+		int colTest;
+		State win = State.E;
 		Board b = new Board(7, 7);
 		while (play == true) {
+			win = b.winner();
+			if (win != State.E) {
+				System.out.println(win + " is the winner!\n\nFinal Board:");
+				System.out.print(b);
+				break;
+			} else {
+			}
 			System.out.println(who(turn) + " it's your turn! Pick a column.");
 			System.out.print(b);
-			col = s.nextInt();
-			col -= 1;
-			errorTest = checkCol(col, b);
-			if (errorTest == 1) {
+			col = s.nextInt() -1;
+			colTest = checkCol(col, b);
+			if (colTest == 1) {
 				System.out.println("Column full, pick a new column.");
 			} else {
 				b.setState(b.getRow(col), col, getState(turn));
@@ -24,8 +31,8 @@ public class Driver {
 				turn = swap(turn);
 			}
 		}
-		System.out.print(b);
-		turn = swap(turn);
+		//System.out.print(b);
+		//turn = swap(turn);
 
 	}
 
@@ -50,7 +57,8 @@ public class Driver {
 		}
 	}
 
-	public static State getState(int turn) {//may be able to get this from board
+	public static State getState(int turn) {// may be able to get this from
+											// board
 		if (turn == 0) {
 			return State.X;
 		} else if (turn == 1) {
