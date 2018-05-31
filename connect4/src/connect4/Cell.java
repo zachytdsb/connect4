@@ -1,5 +1,5 @@
 package connect4;
-
+// Docstring
 public class Cell { //test
 	private State state;
 	public Cell (){

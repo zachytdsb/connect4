@@ -1,5 +1,5 @@
 package connect4;
-
+// Docstring
 public class Board {
 	private Cell[][] board;
 	private int rows;
@@ -54,7 +54,7 @@ public class Board {
 					}
 				} else {
 				}
-			} finally {
+			} catch (IndexOutOfBoundsException e) {
 			}
 			try {
 				if (dir == 0 || dir == 2) {
@@ -64,7 +64,7 @@ public class Board {
 					}
 				} else {
 				}
-			} finally {
+			} catch (IndexOutOfBoundsException e) {
 			}
 			try {
 				if (dir == 0 || dir == 3) {
@@ -74,7 +74,7 @@ public class Board {
 					}
 				} else {
 				}
-			} finally {
+			} catch (IndexOutOfBoundsException e) {
 			}
 			try {
 				if (dir == 0 || dir == 4) {
@@ -84,7 +84,7 @@ public class Board {
 					}
 				} else {
 				}
-			} finally {
+			} catch (IndexOutOfBoundsException e) {
 			}
 			try {
 				if (dir == 0 || dir == 5) {
@@ -94,7 +94,7 @@ public class Board {
 					}
 				} else {
 				}
-			} finally {
+			} catch (IndexOutOfBoundsException e) {
 			}
 		} else {
 			recursionState = s;

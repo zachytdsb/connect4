@@ -1,16 +1,18 @@
 package connect4;
-
+// Docstring
 import java.util.Scanner;
 
 public class Driver {
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		boolean play = true;
+		int rows = 7;
+		int cols = 7;
 		int turn = 0;
 		int col;
 		int colTest;
 		State win = State.E;
-		Board b = new Board(7, 7);
+		Board b = new Board(rows, cols);
 		while (play == true) {
 			win = b.winner();
 			if (win != State.E) {
@@ -21,19 +23,20 @@ public class Driver {
 			}
 			System.out.println(who(turn) + " it's your turn! Pick a column.");
 			System.out.print(b);
-			col = s.nextInt() -1;
-			colTest = checkCol(col, b);
-			if (colTest == 1) {
-				System.out.println("Column full, pick a new column.");
+			col = s.nextInt() - 1;
+			if (col + 1 > cols) {
+				System.out.println("Column number too large, please pick one between 1 and " + cols);
 			} else {
-				b.setState(b.getRow(col), col, getState(turn));
-				System.out.print(b);
-				turn = swap(turn);
+				colTest = checkCol(col, b);
+				if (colTest == 1) {
+					System.out.println("Column full, pick a new column.");
+				} else {
+					b.setState(b.getRow(col), col, getState(turn));
+					System.out.print(b);
+					turn = swap(turn);
+				}
 			}
 		}
-		//System.out.print(b);
-		//turn = swap(turn);
-
 	}
 
 	public static int checkCol(int cols, Board board) {
