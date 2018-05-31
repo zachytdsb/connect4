@@ -17,13 +17,12 @@ public class Driver {
 			col -= 1;
 			errorTest = checkCol(col, b);
 			if (errorTest == 1) {
-				System.out.println("col full");
-				break;
+				System.out.println("Column full, pick a new column.");
 			} else {
 				b.setState(b.getRow(col), col, getState(turn));
+				System.out.print(b);
+				turn = swap(turn);
 			}
-			System.out.print(b);
-
 		}
 		System.out.print(b);
 		turn = swap(turn);
