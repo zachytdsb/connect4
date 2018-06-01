@@ -1,14 +1,22 @@
 package connect4;
-// Docstring
+
+/**
+ * 
+ * @author Zach Yerrill. The board class contains all the functions and the 2D
+ *         array of cells to allow the driver to play the connect 4 game.
+ *
+ */
 public class Board {
 	private Cell[][] board;
 	private int rows;
 	private int cols;
-	private int recursion = 0;
-	private boolean recursionValid = false;
-	private State recursionState;
+	private boolean recursionValid = false; // checkNextPos() sets to true if
+											// winner is found
+	private State recursionState; // checkNextPos() sets to a player if a winner
+									// is found
+	private int connectNum = 4; // Number of pieces connected needed to win
 
-	public Board(int aRows, int aCols) {
+	public Board(int aRows, int aCols) { // Initialize the 2D array of cells
 		rows = aRows;
 		cols = aCols;
 		board = new Cell[rows][cols];
@@ -19,7 +27,8 @@ public class Board {
 		}
 	}
 
-	public int getRow(int column) {
+	public int getRow(int column) { // Gets the lowest empty space available for
+									// dropped piece
 		int lowest = rows - 1;
 		for (int i = lowest; i > 0; i--) {
 			if (board[i][column].getState() == State.E) {
@@ -29,7 +38,8 @@ public class Board {
 		return 0;
 	}
 
-	public boolean isColFull(int column) {
+	public boolean isColFull(int column) { // Checks if players selected column
+											// is full
 		if (board[0][column].getState() == State.E) {
 			return false;
 		} else {
@@ -37,15 +47,27 @@ public class Board {
 		}
 	}
 
-	public void setState(int row, int column, State state) {
+	public void setState(int row, int column, State state) { // Changes the
+																// state of a
+																// cell
 		board[row][column].changeState(state);
 	}
 
 	public void checkNextPos(int row, int col, State s, int layer, int dir) {
-		if (dir == 0) {
-			recursion = 0;
-		}
-		if (layer < 3) {
+		/*
+		 * Recursion function behind winner(). Dir - Direction (see diagram in
+		 * github for values). s - state that the function it is checking for.
+		 * Layer - How many times it has recursed(is that a word?). Win function
+		 * starts by inputting a row, col, state, and enters '0' for all
+		 * directions. Searching from bottom up, it checks all positions
+		 * surrounding the selected piece for the same state. If it finds one, a
+		 * layer is added on and only that direction is specified to be
+		 * searched, then again until it gets 4(or connectNum value). Once 4
+		 * have been confirmed, the next pass will not check for another match,
+		 * but rather set recursionValid and recursionState to be used by the
+		 * winner() function.
+		 */
+		if (layer < connectNum - 1) {
 			try {
 				if (dir == 0 || dir == 1) {
 					if (board[row - 1][col - 1].getState() == s) {
@@ -102,7 +124,7 @@ public class Board {
 		}
 	}
 
-	public State winner() {
+	public State winner() { //Scans for pieces, bottom up, then runs checkNextPos()
 		for (int i = rows - 1; i >= 0; i--) {
 			for (int j = 0; j < cols; j++) {
 				if (board[i][j].getState() != State.E) {

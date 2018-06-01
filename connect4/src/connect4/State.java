@@ -1,5 +1,10 @@
 package connect4;
-// Finalized
+
+/**
+ * 
+ * @author Zach Yerrill. Enum for cell states.
+ *
+ */
 public enum State {
 	X, O, E;
 }

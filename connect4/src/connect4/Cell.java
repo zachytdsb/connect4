@@ -1,23 +1,29 @@
 package connect4;
-// Docstring
-public class Cell { //test
+
+/**
+ * 
+ * @author Zach Yerrill. Contains a state and a change state. Cell used for
+ *         board, and cell uses states.
+ *
+ */
+public class Cell { // test
 	private State state;
-	public Cell (){
+
+	public Cell() {
 		state = State.E;
-		
 	}
-	
-	public State getState(){
+
+	public State getState() {
 		return state;
 	}
-	
-	public void changeState(State aState){
+
+	public void changeState(State aState) {
 		state = aState;
 	}
-	
+
 	@Override
-	public String toString(){
-		switch(state){
+	public String toString() {
+		switch (state) {
 		case X:
 			return "X";
 		case O:
@@ -28,12 +34,11 @@ public class Cell { //test
 			return "E";
 		}
 	}
-	
-	public boolean equals(Cell i){
-		if(state == i.getState()){
+
+	public boolean equals(Cell i) {
+		if (state == i.getState()) {
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 	}

@@ -1,16 +1,22 @@
 package connect4;
-// Docstring
+
 import java.util.Scanner;
 
+/**
+ * 
+ * @author Zach Yerrill. Driver runs all the game and use board, cell, and
+ *         state.
+ *
+ */
 public class Driver {
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		boolean play = true;
-		int rows = 7;
-		int cols = 7;
-		int turn = 0;
-		int col;
-		int colTest;
+		int rows = 7; //Rows for board
+		int cols = 7; //Columns for board
+		int turn = 0; //Who's turn it is, changed by swap() function
+		int col; //Saves selected column for drop
+		int colTest; //Saves the return value for isColFull()
 		State win = State.E;
 		Board b = new Board(rows, cols);
 		while (play == true) {
@@ -32,14 +38,14 @@ public class Driver {
 					System.out.println("Column full, pick a new column.");
 				} else {
 					b.setState(b.getRow(col), col, getState(turn));
-					System.out.print(b);
+					//System.out.print(b);
 					turn = swap(turn);
 				}
 			}
 		}
 	}
 
-	public static int checkCol(int cols, Board board) {
+	public static int checkCol(int cols, Board board) { //Checks if a column is full
 		int result;
 		if (board.isColFull(cols) == true) {
 			result = 1;
@@ -60,8 +66,7 @@ public class Driver {
 		}
 	}
 
-	public static State getState(int turn) {// may be able to get this from
-											// board
+	public static State getState(int turn) { //Returns state value for turn int
 		if (turn == 0) {
 			return State.X;
 		} else if (turn == 1) {
@@ -71,7 +76,7 @@ public class Driver {
 		}
 	}
 
-	public static int swap(int turn) {// Change whose turn it is
+	public static int swap(int turn) { //Change who's turn it is
 		if (turn == 0) {
 			return 1;
 		} else if (turn == 1) {
