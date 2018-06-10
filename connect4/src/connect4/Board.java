@@ -10,10 +10,8 @@ public class Board {
 	private Cell[][] board;
 	private int rows;
 	private int cols;
-	private boolean recursionValid = false; // checkNextPos() sets to true if
-											// winner is found
-	private State recursionState; // checkNextPos() sets to a player if a winner
-									// is found
+	private boolean recursionValid = false; // checkNextPos() sets to true if winner is found
+	private State recursionState; // checkNextPos() sets to a player if a winner is found
 	private int connectNum = 4; // Number of pieces connected needed to win
 
 	public Board(int aRows, int aCols) { // Initialize the 2D array of cells
@@ -27,8 +25,7 @@ public class Board {
 		}
 	}
 
-	public int getRow(int column) { // Gets the lowest empty space available for
-									// dropped piece
+	public int getRow(int column) { // Gets the lowest empty space available for dropped piece
 		int lowest = rows - 1;
 		for (int i = lowest; i > 0; i--) {
 			if (board[i][column].getState() == State.E) {
@@ -38,8 +35,7 @@ public class Board {
 		return 0;
 	}
 
-	public boolean isColFull(int column) { // Checks if players selected column
-											// is full
+	public boolean isColFull(int column) { // Checks if players selected column is full
 		if (board[0][column].getState() == State.E) {
 			return false;
 		} else {
@@ -47,9 +43,7 @@ public class Board {
 		}
 	}
 
-	public void setState(int row, int column, State state) { // Changes the
-																// state of a
-																// cell
+	public void setState(int row, int column, State state) { // Changes the state of a cell
 		board[row][column].changeState(state);
 	}
 
@@ -143,7 +137,7 @@ public class Board {
 		String output = "";
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length; j++) {
-				output += board[i][j].toString();
+				output += board[i][j].toString() + "  ";
 			}
 			output += "\n";
 		}
